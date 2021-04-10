@@ -30,7 +30,7 @@ func (actualTasks *taskList) printTasksCompleted() {
 	for _, v := range actualTasks.tasks {
 		if v.completed {
 			println("nombre", v.name)
-			println("decripvion", v.description)
+			println("decripcion", v.description)
 
 		}
 	}
@@ -78,5 +78,32 @@ func main() {
 	}
 	t2.markComplete()
 	lista.AddTask(t3)
-	lista.printTasksCompleted()
+	// lista.printTasksCompleted()
+
+	mapTasks := make(map[string]*taskList)
+
+	mapTasks["Daniel"] = lista
+
+	t4 := &task{
+		name:        "otra tarea",
+		description: "nueva tarea de otro usuario",
+	}
+	t5 := &task{
+		name:        "segunda tarea",
+		description: "segunda tarea description",
+	}
+
+	lista2 := &taskList{
+		[]*task{
+			t4,
+			t5,
+		},
+	}
+
+	mapTasks["Camila"] = lista2
+
+	println("Tareas daniel:")
+	mapTasks["Daniel"].printTasks()
+	println("Tareas Camila:")
+	mapTasks["Camila"].printTasks()
 }
